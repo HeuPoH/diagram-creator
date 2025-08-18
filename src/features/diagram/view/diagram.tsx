@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { type NodeChange, applyNodeChanges, ReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
+import { openSceneEditor } from 'features/diagram/view/scene-editor';
 import { customNodes } from 'features/diagram/model/config';
 import { updateContainers } from 'features/diagram/model/slice';
 import type { Container } from 'features/diagram/model/types';
@@ -13,6 +14,7 @@ import classes from './diagram.module.css';
 
 import addIcon from 'assetss/icons/add.svg';
 import deleteIcon from 'assetss/icons/delete.svg';
+import editIcon from 'assetss/icons/edit.svg';
 
 export const Diagram: React.FC = () => {
   const [containers, add, remove] = useDispatchSceneAndContainer();
@@ -29,11 +31,18 @@ export const Diagram: React.FC = () => {
 
   const onNodeContextMenu = (e: React.MouseEvent, node: Container) => {
     e.stopPropagation();
-    const menu = [{
+    const menu = [
+      {
+        label: 'Редактировать сцену',
+        command: () => openSceneEditor(),
+        icon: editIcon
+      },
+      {
       label: 'Удалить сцену',
       command: () => remove(node.data.entityId),
       icon: deleteIcon
-    }];
+      }
+    ];
     Menu.show(e, menu);
   };
 

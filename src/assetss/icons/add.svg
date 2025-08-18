@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Скачано с сайта svg4.ru / Downloaded from svg4.ru -->
-<svg width="800px" height="800px" viewBox="0 0 14 14" role="img" focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-<circle cx="7" cy="7" r="6" fill="#4caf50"/>
-<g fill="#ffffff">
-<path d="M6.14285713 4.1428571h1.71428574v5.7142858H6.14285713z"/>
-<path d="M4.1428571 6.14285713h5.7142858v1.71428574H4.1428571z"/>
-</g>
-</svg>
+<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="#00a313"  class="icon icon-tabler icons-tabler-filled icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" /></svg>
