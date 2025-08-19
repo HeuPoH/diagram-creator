@@ -1,0 +1,10 @@
+.form-group-column {
+  display: flex;
+  column-gap: 6px;
+}
+
+.form-group-row {
+  display: flex;
+  flex-direction: column;
+  column-gap: 2px;
+}

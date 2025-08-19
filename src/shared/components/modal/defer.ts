@@ -15,7 +15,7 @@ export function defer<T>(render: Renderer<T>): Promise<T> {
 
   const mount = (res: Resolver<T>) => {
     root.render(render(res));
-  }
+  };
 
   return new Promise<T>(mount).finally(unmount);
 }
