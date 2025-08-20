@@ -6,15 +6,12 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const input: string;
-const error: string;
+const button: string;
 
 export {
-	input,
-	error
+	button
 };
 
 export default {
-	input,
-	error
+	button
 };

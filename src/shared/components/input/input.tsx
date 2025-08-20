@@ -10,7 +10,7 @@ export const Input: React.FC<Props>= ({ value, onChange, ...rest }) => {
     <input
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={classes.inputField}
+      className={classes.input}
       {...rest}
     />
   );

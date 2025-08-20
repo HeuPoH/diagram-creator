@@ -9,7 +9,7 @@ export const Textarea: React.FC<Props> = ({ value, onChange, ...rest }) => {
     <textarea
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={classes.textareaField}
+      className={classes.textarea}
       {...rest}
     />
   );

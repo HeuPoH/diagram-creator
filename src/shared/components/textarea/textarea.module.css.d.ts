@@ -6,22 +6,12 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const textareaField: string;
-const error: string;
-const inputField: string;
+const textarea: string;
 
 export {
-	textareaField as "textarea-field",
-	textareaField,
-	error,
-	inputField as "input-field",
-	inputField
+	textarea
 };
 
 export default {
-	"textarea-field": textareaField,
-	textareaField,
-	error,
-	"input-field": inputField,
-	inputField
+	textarea
 };
