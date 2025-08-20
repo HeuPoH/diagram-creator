@@ -1,19 +1,57 @@
-import { defer, Modal, ModalButtons } from 'shared/components/modal';
+import React from 'react';
 
-export function openSceneEditor() {
-  return defer((resolve) => <SceneEditor onOk={resolve} onCancel={() => resolve(undefined)} />);
+import type { ISceneInfo } from 'app/model/types';
+
+import { defer, Modal, ModalButtons } from 'shared/components/modal';
+import { Input } from 'shared/components/input';
+import { Textarea } from 'shared/components/textarea';
+import { FormGroup } from 'shared/components/form';
+
+type Args = {
+  scene: ISceneInfo
+};
+export function openSceneEditor(args: Args) {
+  return defer<ISceneInfo | undefined>((resolve) => (
+    <SceneEditor
+      {...args}
+      onOk={resolve}
+      onCancel={() => resolve(undefined)}
+    />
+  ));
 }
 
 type Props = {
-  onOk(value: unknown): void;
+  scene: ISceneInfo;
+  onOk(value: ISceneInfo): void;
   onCancel(): void;
 };
 
-const SceneEditor: React.FC<Props> = ({ onOk, onCancel }) => {
+const SceneEditor: React.FC<Props> = ({ onOk, onCancel, scene }) => {
+  const [state, setState] = React.useState(() => ({ ...scene }));
+  const onChange = (partial: Partial<ISceneInfo>) => {
+    setState(prev => ({ ...prev, ...partial }));
+  };
+
   return (
     <Modal onClose={onCancel}>
-      <div>Editor</div>
-      <ModalButtons onOk={() => onOk({})} onCancel={onCancel} />
+      <FormGroup direction='row'>
+        <label htmlFor='scene-title'>Название сцены</label>
+        <Input
+          id='scene-title'
+          value={state.title}
+          onChange={(v) => onChange({ title: v })}
+        />
+      </FormGroup>
+      <FormGroup direction='row'>
+        <label htmlFor='scene-description'>Описание сцены</label>
+        <Textarea
+          id='scene-description'
+          value={state.description}
+          onChange={(v) => onChange({ description: v })}
+          style={{ resize: 'vertical' }}
+        />
+      </FormGroup>
+      <ModalButtons onOk={() => onOk(state)} onCancel={onCancel} />
     </Modal>
   );
 };
