@@ -1,0 +1,41 @@
+.select {
+  width: 100%;
+  padding: 6px;
+  border: 2px solid var(--default-border-color);
+  border-radius: var(--default-border-radius);
+  background-color: #fff;
+  color: var(--default-color);
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: var(--focus-border-color);
+  box-shadow: 0 0 0 3px var(--focus-box-shadow-color);
+}
+
+.select:hover {
+  border-color: var(--hover-border-color);
+}
+
+.select option {
+  padding: 12px;
+  background-color: #fff;
+  color: #2d3748;
+}
+
+.select option:checked {
+  background-color: #4299e1;
+  color: white;
+}
+
+.select option:hover {
+  background-color: #e6f7ff;
+}
+
+.select-opened {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
