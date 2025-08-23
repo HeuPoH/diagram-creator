@@ -2,28 +2,25 @@
   line-height: 1.5;
   width: 100%;
   padding: 6px;
-  font-size: 16px;
-  font-family: inherit;
-  border: 2px solid #e1e5e9;
-  border-radius: 8px;
+  border: 2px solid var(--default-border-color);
+  border-radius: var(--default-border-radius);
   background-color: #fff;
-  color: #2d3748;
+  color: var(--default-color);
   transition: all 0.3s ease;
   outline: none;
   box-sizing: border-box;
-  margin-bottom: 16px;
 }
 
 .textarea:focus {
-  border-color: #4299e1;
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  border-color: var(--focus-border-color);
+  box-shadow: 0 0 0 3px var(--focus-box-shadow-color);
 }
 
 .textarea:hover {
-  border-color: #a0aec0;
+  border-color: var(--hover-border-color);
 }
 
 .textarea::placeholder {
-  color: #a0aec0;
+  color: var(--placeholder-color);
   opacity: 1;
 }

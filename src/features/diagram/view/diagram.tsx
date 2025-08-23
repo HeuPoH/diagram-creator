@@ -4,7 +4,7 @@ import '@xyflow/react/dist/style.css';
 
 import { updateScene } from 'app/model/slice';
 import { useAppDispatch, useAppSelector } from 'app/store/hooks';
-import { openSceneEditor } from 'features/diagram/view/scene-editor';
+import { openSceneEditor } from 'features/diagram/view/scene/scene-editor';
 import { customNodes } from 'features/diagram/model/config';
 import { updateContainers } from 'features/diagram/model/slice';
 import type { Container } from 'features/diagram/model/types';

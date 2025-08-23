@@ -7,6 +7,8 @@ import { Input } from 'shared/components/input';
 import { Textarea } from 'shared/components/textarea';
 import { FormGroup } from 'shared/components/form';
 
+import classes from './scene-editor.module.css';
+
 type Args = {
   scene: ISceneInfo
 };
@@ -34,23 +36,25 @@ const SceneEditor: React.FC<Props> = ({ onOk, onCancel, scene }) => {
 
   return (
     <Modal onClose={onCancel}>
-      <FormGroup direction='row'>
-        <label htmlFor='scene-title'>Название сцены</label>
-        <Input
-          id='scene-title'
-          value={state.title}
-          onChange={(v) => onChange({ title: v })}
-        />
-      </FormGroup>
-      <FormGroup direction='row'>
-        <label htmlFor='scene-description'>Описание сцены</label>
-        <Textarea
-          id='scene-description'
-          value={state.description}
-          onChange={(v) => onChange({ description: v })}
-          style={{ resize: 'vertical' }}
-        />
-      </FormGroup>
+      <div className={classes.sceneEditor}>
+        <FormGroup direction='row'>
+          <label htmlFor='scene-title'>Название сцены:</label>
+          <Input
+            id='scene-title'
+            value={state.title}
+            onChange={(v) => onChange({ title: v })}
+          />
+        </FormGroup>
+        <FormGroup direction='row'>
+          <label htmlFor='scene-description'>Описание сцены:</label>
+          <Textarea
+            id='scene-description'
+            value={state.description}
+            onChange={(v) => onChange({ description: v })}
+            style={{ resize: 'vertical' }}
+          />
+        </FormGroup>
+      </div>
       <ModalButtons onOk={() => onOk(state)} onCancel={onCancel} />
     </Modal>
   );

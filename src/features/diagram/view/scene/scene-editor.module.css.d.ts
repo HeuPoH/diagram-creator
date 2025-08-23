@@ -6,12 +6,14 @@
  * https://npmjs.com/vite-css-modules
  */
 
-const input: string;
+const sceneEditor: string;
 
 export {
-	input
+	sceneEditor as "scene-editor",
+	sceneEditor
 };
 
 export default {
-	input
+	"scene-editor": sceneEditor,
+	sceneEditor
 };
