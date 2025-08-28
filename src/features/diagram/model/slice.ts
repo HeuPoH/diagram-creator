@@ -1,7 +1,9 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { Container, State } from 'features/diagram/model/types';
 
-const initialState: State = { containers: [] };
+const initialState: State = { containers: [
+  { id: '131', position: { x: 100, y: 100 }, data: { entityId: '11' } },
+] };
 const slice = createSlice({
   name: 'diagram',
   initialState,

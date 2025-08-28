@@ -1,6 +1,7 @@
 import React from 'react';
 
-import type { ISceneInfo } from 'app/model/types';
+import type { IChoice, ISceneInfo } from 'app/model/types';
+import { Choices } from 'features/diagram/view/choices/choices';
 
 import { defer, Modal, ModalButtons } from 'shared/components/modal';
 import { Input } from 'shared/components/input';
@@ -9,11 +10,14 @@ import { FormGroup } from 'shared/components/form';
 
 import classes from './scene-editor.module.css';
 
+type Result = { scene: ISceneInfo; choices: IChoice[] };
+
 type Args = {
-  scene: ISceneInfo
+  scene: ISceneInfo;
+  choices: IChoice[];
 };
 export function openSceneEditor(args: Args) {
-  return defer<ISceneInfo | undefined>((resolve) => (
+  return defer<Result | undefined>((resolve) => (
     <SceneEditor
       {...args}
       onOk={resolve}
@@ -22,17 +26,24 @@ export function openSceneEditor(args: Args) {
   ));
 }
 
-type Props = {
-  scene: ISceneInfo;
-  onOk(value: ISceneInfo): void;
+type Props = Args & {
+  onOk(res: Result): void;
   onCancel(): void;
 };
 
-const SceneEditor: React.FC<Props> = ({ onOk, onCancel, scene }) => {
-  const [state, setState] = React.useState(() => ({ ...scene }));
-  const onChange = (partial: Partial<ISceneInfo>) => {
-    setState(prev => ({ ...prev, ...partial }));
+const SceneEditor: React.FC<Props> = ({ onOk, onCancel, scene, choices }) => {
+  const [sceneData, setSceneData] = React.useState(() => ({ ...scene }));
+  const updatedChoices = React.useRef(choices);
+
+  const onSceneChanged = (partial: Partial<ISceneInfo>) => {
+    setSceneData(prev => ({ ...prev, ...partial }));
   };
+
+  const onChoicesChanged = (choices: IChoice[]) => {
+    updatedChoices.current = choices;
+  };
+  
+  const getDataToSave = () => ({ scene: sceneData, choices: updatedChoices.current });
 
   return (
     <Modal onClose={onCancel}>
@@ -41,21 +52,26 @@ const SceneEditor: React.FC<Props> = ({ onOk, onCancel, scene }) => {
           <label htmlFor='scene-title'>Название сцены:</label>
           <Input
             id='scene-title'
-            value={state.title}
-            onChange={(v) => onChange({ title: v })}
+            value={sceneData.title}
+            onChange={(v) => onSceneChanged({ title: v })}
           />
         </FormGroup>
         <FormGroup direction='row'>
           <label htmlFor='scene-description'>Описание сцены:</label>
           <Textarea
             id='scene-description'
-            value={state.description}
-            onChange={(v) => onChange({ description: v })}
+            value={sceneData.description}
+            onChange={(v) => onSceneChanged({ description: v })}
             style={{ resize: 'vertical' }}
           />
         </FormGroup>
+        <Choices
+          choices={choices}
+          onChoicesChanged={onChoicesChanged}
+          scenes={[]}
+        />
       </div>
-      <ModalButtons onOk={() => onOk(state)} onCancel={onCancel} />
+      <ModalButtons onOk={() => onOk(getDataToSave())} onCancel={onCancel} />
     </Modal>
   );
 };

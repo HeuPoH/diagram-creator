@@ -20,6 +20,7 @@ import editIcon from 'assetss/icons/edit.svg';
 export const Diagram: React.FC = () => {
   const [containers, add, remove] = useDispatchSceneAndContainer();
   const scenes = useAppSelector(state => state.scenes.scenes);
+  const choices = useAppSelector(state => state.scenes.choices);
   const dispatch = useAppDispatch();
 
   const onContextMenu = (e: React.MouseEvent) => {
@@ -34,7 +35,8 @@ export const Diagram: React.FC = () => {
   const openSceneEditorHandler = async (sceneId: string) => {
     const scene = scenes[sceneId];
     if (scene) {
-      const res = await openSceneEditor({ scene });
+      const choiceObjs = scene.choiceIds.map(id => choices[id]);
+      const res = await openSceneEditor({ scene, choices: choiceObjs });
       if (res) {
         dispatch(updateScene({ id: sceneId, data: res }));
       }

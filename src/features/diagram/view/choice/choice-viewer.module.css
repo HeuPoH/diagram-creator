@@ -1,0 +1,31 @@
+.choice-viewer {
+  background: #ffffff;
+  border: 1px solid #e1e5e9;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.choice-title {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.choice-description {
+  color: #4b5563;
+}
+
+.choice-destination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  padding: 8px 12px;
+  background-color: #f8fafc;
+  border-radius: 6px;
+}
+
+.choice-destination::before {
+  content: "🔗";
+}
