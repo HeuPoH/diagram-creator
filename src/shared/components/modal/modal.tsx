@@ -1,3 +1,4 @@
+import { cn } from 'shared/utils/cn';
 import { Button } from 'shared/components/button/button';
 import classes from 'shared/components/modal/modal.module.css';
 
@@ -31,8 +32,8 @@ type ModalButtonsProps = {
 export const ModalButtons: React.FC<ModalButtonsProps> = ({ onOk, onCancel }) => {
   return (
     <div className={classes.modalButtonsContainer}>
-      <Button className={classes.modalButtonOk} onClick={onOk}>OK</Button>
-      <Button className={classes.modalButtonCancel} onClick={onCancel}>Отмена</Button>
+      <Button className={cn(classes.modalButton, classes.modalButtonOk)} onClick={onOk}>OK</Button>
+      <Button className={cn(classes.modalButton, classes.modalButtonCancel)} onClick={onCancel}>Отмена</Button>
     </div>
   );
 };

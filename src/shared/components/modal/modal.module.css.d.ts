@@ -10,6 +10,7 @@ const modalOverlay: string;
 const modalContent: string;
 const modalClose: string;
 const modalButtonsContainer: string;
+const modalButton: string;
 const modalButtonOk: string;
 const modalButtonCancel: string;
 
@@ -22,6 +23,8 @@ export {
 	modalClose,
 	modalButtonsContainer as "modal-buttons-container",
 	modalButtonsContainer,
+	modalButton as "modal-button",
+	modalButton,
 	modalButtonOk as "modal-button-ok",
 	modalButtonOk,
 	modalButtonCancel as "modal-button-cancel",
@@ -37,6 +40,8 @@ export default {
 	modalClose,
 	"modal-buttons-container": modalButtonsContainer,
 	modalButtonsContainer,
+	"modal-button": modalButton,
+	modalButton,
 	"modal-button-ok": modalButtonOk,
 	modalButtonOk,
 	"modal-button-cancel": modalButtonCancel,

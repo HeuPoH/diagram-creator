@@ -47,6 +47,11 @@
   padding-top: 20px;
 }
 
+.modal-button {
+  padding: 10px 24px;
+  min-width: 80px;
+}
+
 .modal-button-ok {
   background-color: #4CAF50;
   color: white;

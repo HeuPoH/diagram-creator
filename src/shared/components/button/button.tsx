@@ -3,7 +3,7 @@ import { cn } from 'shared/utils/cn';
 import classes from './button.module.css';
 
 type Props = {
-  children: string;
+  children: string | React.JSX.Element;
   className?: string;
   onClick(e: React.MouseEvent): void;
 };
